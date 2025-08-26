@@ -8,20 +8,113 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-   
+    --background: 18 18 18; /* #121212 */
+    --foreground: 0 0 100%; /* white */
+    --card: 26 26 26; /* #1a1a1a */
+    --card-foreground: 0 0 100%;
+    --popover: 18 18 18;
+    --popover-foreground: 0 0 100%;
+    --primary: 0 0 100%; /* white */
+    --primary-foreground: 18 18 18; /* #121212 */
+    --secondary: 46 46 46; /* #2e2e2e */
+    --secondary-foreground: 0 0 100%;
+    --muted: 52 52 52; /* #858585/20 equivalent */
+    --muted-foreground: 0 0 71%; /* zinc-300 */
+    --accent: 46 46 46;
+    --accent-foreground: 0 0 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0 100%;
+    --border: 46 46 46; /* #2e2e2e */
+    --input: 46 46 46;
+    --ring: 0 0 100%;
+    --radius: 0.75rem;
+
+    /* Custom colors for Tokyo AI */
+    --gradient-from: 0 0% 0%; /* black */
+    --gradient-via: 0 0% 52%; /* #858585 */
+    --gradient-to: 0 0% 0%; /* black */
+    --zinc-300: 0 0 71%;
+    --zinc-400: 0 0 58%;
+    --zinc-600: 0 0 38%;
+    --zinc-900: 0 0 9%;
   }
 
   .dark {
-
+    --background: 18 18 18;
+    --foreground: 0 0 100%;
+    --card: 26 26 26;
+    --card-foreground: 0 0 100%;
+    --popover: 18 18 18;
+    --popover-foreground: 0 0 100%;
+    --primary: 0 0 100%;
+    --primary-foreground: 18 18 18;
+    --secondary: 46 46 46;
+    --secondary-foreground: 0 0 100%;
+    --muted: 52 52 52;
+    --muted-foreground: 0 0 71%;
+    --accent: 46 46 46;
+    --accent-foreground: 0 0 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0 100%;
+    --border: 46 46 46;
+    --input: 46 46 46;
+    --ring: 0 0 100%;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-white via-zinc-300 to-white bg-clip-text text-transparent;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  .hero-gradient {
+    @apply bg-gradient-to-r from-black via-zinc-500/20 to-black;
   }
+
+  .card-gradient {
+    @apply bg-gradient-to-r from-black via-zinc-500/20 to-black border border-zinc-500/20;
+  }
+
+  .feature-card {
+    @apply bg-white rounded-xl p-8 hover:border-zinc-600 transition-all hover:scale-105;
+  }
+
+  .nav-link {
+    @apply text-zinc-300 hover:text-white transition-colors;
+  }
+
+  .primary-button {
+    @apply bg-white hover:bg-zinc-100 text-black px-8 py-4 rounded-xl font-bold transition-all hover:opacity-80 cursor-pointer;
+  }
+
+  .secondary-button {
+    @apply hover:opacity-80 text-white font-semibold px-6 py-2 rounded-lg transition-colors cursor-pointer;
+  }
+
+  .icon-container {
+    @apply w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-6;
+  }
+
+  .stats-item {
+    @apply flex items-center justify-between;
+  }
+
+  .step-number {
+    @apply w-12 h-12 bg-white border-zinc-500/20 rounded-xl flex items-center justify-center flex-shrink-0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom font loading */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
